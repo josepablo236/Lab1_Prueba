@@ -15,7 +15,7 @@ namespace LABORATORIO_PRUEBA1.Controllers
             var items = FilesUploaded();
             return View(items);
         }
-
+//----------------------------SUBIR ARCHIVO ------------------------------------------------------------------------
         //El metodo que mando a llamar desde el Index.cshtml al momento de presionar el submit ("Upload File")
         [HttpPost]          //Recibo un archivo
         public ActionResult Index(HttpPostedFileBase file)
@@ -73,6 +73,20 @@ namespace LABORATORIO_PRUEBA1.Controllers
             return File(FileVirtualPath, "application/force- download", Path.GetFileName(FileVirtualPath));
         }
 
+        public ActionResult ReadFiletext(string TxtName)
+        {
+           string lector;
+            string Path = "Archivos/" + TxtName;
+            System.IO.StreamReader Leer = new System.IO.StreamReader(Path);
+            lector = "";
+            while (!Leer.EndOfStream)
+            {
+               lector = Leer.ReadLine();
+            }
+            ViewBag.Message = lector;
+            return RedirectToAction("ReadFile", "ReadFiletext", new { filename = TxtName });
+        }
+      
         
     }
 }
