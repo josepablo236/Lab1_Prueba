@@ -30,11 +30,11 @@
             </tr>
             @for (var i = 0; i <= Model.Count - 1; i++)
             {
-                <tr>
-                    <td>@Model[i].ToString() </td>
-                    <td>@Html.ActionLink("Download", "Download", new { TxtName = @Model[i].ToString() }) </td>
-                    <td>@Html.ActionLink("ReadFiletext", "ReadFiletext", new { TxtName = @Model[i].ToString() }) </td>
-                </tr>
+            <tr>
+                <td>@Model[i].ToString() </td>
+                <td>@Html.ActionLink("Download", "Download", new { TxtName = @Model[i].ToString() }) </td>
+                <td>@Html.ActionLink("Read", "Read", new { TxtName = @Model[i].ToString() }) </td>
+            </tr>
             }
         </table>
     }

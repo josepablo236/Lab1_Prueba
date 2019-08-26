@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Text;
 
 namespace LABORATORIO_PRUEBA1.Controllers
 {
@@ -72,21 +73,21 @@ namespace LABORATORIO_PRUEBA1.Controllers
             var FileVirtualPath = "~/Archivos/" + TxtName;
             return File(FileVirtualPath, "application/force- download", Path.GetFileName(FileVirtualPath));
         }
-
-        public ActionResult ReadFiletext(string TxtName)
+        public ActionResult Read(string TxtName)
         {
-           string lector;
-            string Path = "Archivos/" + TxtName;
-            System.IO.StreamReader Leer = new System.IO.StreamReader(Path);
-            lector = "";
+            string path = Path.Combine(Server.MapPath("~/Archivos"), TxtName);
+            System.IO.StreamReader Leer = new System.IO.StreamReader(path);
+            string lector = "a";
             while (!Leer.EndOfStream)
             {
-               lector = Leer.ReadLine();
+                lector = Leer.ReadLine();
             }
-            ViewBag.Message = lector;
-            return RedirectToAction("ReadFile", "ReadFiletext", new { filename = TxtName });
+            byte[] bytes = Encoding.ASCII.GetBytes(lector);
+            int result = BitConverter.ToInt32(bytes, 0);
+            //Result es el trexto ya en codigo ascii
+            return Redirect("/ReadTextController/Read/");
+
         }
-      
-        
+
     }
 }
