@@ -75,18 +75,9 @@ namespace LABORATORIO_PRUEBA1.Controllers
         }
         public ActionResult Read(string TxtName)
         {
-            string path = Path.Combine(Server.MapPath("~/Archivos"), TxtName);
-            System.IO.StreamReader Leer = new System.IO.StreamReader(path);
-            string lector = "a";
-            while (!Leer.EndOfStream)
-            {
-                lector = Leer.ReadLine();
-            }
-            byte[] bytes = Encoding.ASCII.GetBytes(lector);
-            int result = BitConverter.ToInt32(bytes, 0);
-            //Result es el trexto ya en codigo ascii
-            return Redirect("/ReadTextController/Read/");
-
+            
+            return RedirectToAction("Read", "ReadText", new { filename = TxtName });
+            
         }
 
     }
