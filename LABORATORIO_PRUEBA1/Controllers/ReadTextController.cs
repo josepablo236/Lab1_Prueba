@@ -25,12 +25,21 @@ namespace FileUploadDemo.Controllers
             {
                 lector = Leer.ReadLine();
             }
+            //Convierte a codigo Ascii
             byte[] bytes = Encoding.ASCII.GetBytes(lector);
             int result = BitConverter.ToInt32(bytes, 0);
             //Result es el trexto ya en codigo Asciii
-            ViewBag.Message = result.ToString();
+            int[] letras = new int[27]; //Esta matriz va a guardar cuantas veces se repite
+            string[] letras_binary = new string[27]; //Esta matriz va a guardar la letra en binario
+            foreach (int bite in bytes)
+            {
+                letras[bite]++;
+                letras_binary[bite] = bite.ToString(); //Convierte la letra en binario
+            }
+
             return "/";
         }
+
 
     }
 }
