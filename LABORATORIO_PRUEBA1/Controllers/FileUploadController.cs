@@ -26,7 +26,7 @@ namespace LABORATORIO_PRUEBA1.Controllers
                 try
                 {
                     //Valido que unicamente puedan cargar archivos de text
-                    if (Path.GetExtension(file.FileName) == ".doc")
+                    if (Path.GetExtension(file.FileName) == ".txt")
                     {
                         //Me va a devolver la ruta en la que se encuentra la carpeta "Archivos" 
                         string path = Path.Combine(Server.MapPath("~/Archivos"),
@@ -55,7 +55,7 @@ namespace LABORATORIO_PRUEBA1.Controllers
         {
             var dir = new System.IO.DirectoryInfo(Server.MapPath("~/Archivos"));
             //Unicamente tome los archivos de text, ahorita lo puse como doc para probar pero al final lo podriamos dejar como .txt
-            System.IO.FileInfo[] fileNames = dir.GetFiles("*.doc");
+            System.IO.FileInfo[] fileNames = dir.GetFiles("*.txt");
             //Creo una lista con los nombres de todos los archivos para luego poder mostrarlos
             List<string> filesupld = new List<string>();
             foreach (var file in fileNames)

@@ -155,6 +155,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\ReadFileController.cs" />
     <Compile Include="Controllers\ReadTextController.cs" />
+    <Compile Include="Models\EmptyClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
