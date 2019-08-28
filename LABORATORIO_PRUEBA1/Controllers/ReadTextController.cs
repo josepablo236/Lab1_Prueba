@@ -15,7 +15,7 @@ namespace FileUploadDemo.Controllers
             return View ();
         }
         int i = 0;
-        int[] letras
+        int[] letras;
         //Recibo los datos de FileUploadController
 
         public void Read(string filename)
@@ -39,11 +39,16 @@ namespace FileUploadDemo.Controllers
             //Esto puede servir para las probabilidades
             foreach (int word in lector)
             {
-                Contar_repeticiones(word, bytes); 
+                while (word != bytes[i])
+                {
+                    letras[i]++;
+                    i = 0;
+                }
+
             }
         }
         //Función recursiva para comparar cuantas veces se repite, pienso que podria estar mejor, pero por el momento va a servir jaja
-
+/*
         public void Contar_repeticiones(int letra, byte[] bites)
         {
             if (letra == bites[i])
@@ -56,7 +61,7 @@ namespace FileUploadDemo.Controllers
                 i++; 
             }
         }
-
+        */
 
     }
 }
